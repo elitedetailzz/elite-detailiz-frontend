@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Quote | Elite Detailz</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #000, #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+/* ===== CONTAINER ===== */
+.quote-container {
+  background: rgba(255,255,255,0.05);
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 50px 40px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+}
+
+/* ===== TITLE ===== */
+.quote-container h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2.2rem;
+}
+
+.quote-container p {
+  text-align: center;
+  opacity: 0.85;
+  margin-bottom: 40px;
+}
+
+/* ===== FORM ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+label {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+input, select, textarea {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+/* ===== BUTTON ===== */
+button {
+  margin-top: 10px;
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #7c3aed, #60a5fa);
+  color: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(96,165,250,0.6);
+}
+
+/* ===== FOOT ===== */
+.back-link {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.back-link a {
+  color: #60a5fa;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="quote-container">
+  <h1>Book a Quote</h1>
+  <p>Tell us about your vehicle and we’ll get back to you</p>
+
+  <form id="quoteForm">
+
+    <label>Full Name</label>
+    <input id="name" type="text" placeholder="Your name" required>
+
+    <label>Email Address</label>
+    <input id="email" type="email" placeholder="you@email.com" required>
+
+    <label>Phone Number</label>
+    <input id="phone" type="tel" placeholder="+44" required>
+
+    <label>Service Required</label>
+    <select id="service" required>
+      <option value="">Select a service</option>
+      <option>Exterior & Interior</option>
+      <option>Ceramic Coating</option>
+      <option>Headlight Restoration</option>
+      <option>Scratch Repair</option>
+      <option>Paint Correction</option>
+    </select>
+
+    <label>Preferred Date & Time</label>
+    <input
+      id="datetime"
+      type="datetime-local"
+      required
+      min="2026-01-01T09:30"
+      max="2027-12-31T18:30"
+      step="1800">
+
+    <label>Vehicle Details</label>
+    <textarea
+      id="vehicleDetails"
+      placeholder="Make, model, condition, anything we should know...">
+    </textarea>
+
+    <button type="submit">Submit Quote Request</button>
+  </form>
+
+  <div class="back-link">
+    <a href="index.html">← Back to website</a>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
