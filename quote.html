@@ -68,6 +68,16 @@ textarea {
   min-height: 120px;
 }
 
+/* ===== FILE INPUT ===== */
+input[type="file"] {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
+
 /* ===== BUTTON ===== */
 button {
   margin-top: 10px;
@@ -107,7 +117,7 @@ button:hover {
   <h1>Book a Quote</h1>
   <p>Tell us about your vehicle and we’ll get back to you</p>
 
-  <form id="quoteForm" enctype="multipart/form-data">
+  <form id="quoteForm">
 
     <label>Full Name</label>
     <input id="name" type="text" placeholder="Your name" required>
@@ -136,8 +146,13 @@ button:hover {
       min="2026-01-01T00:00"
       max="2027-12-31T23:59">
 
-    <label>Upload Vehicle Image</label>
-    <input id="vehicleImage" type="file" accept="image/*">
+    <label>Vehicle Photos</label>
+    <input
+      id="vehiclePhotos"
+      type="file"
+      accept="image/*"
+      multiple
+      required>
 
     <button type="submit">Submit Quote Request</button>
   </form>
