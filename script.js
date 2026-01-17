@@ -1,3 +1,14 @@
+// =========================
+// ===== MOBILE REDIRECT ====
+// =========================
+if (window.innerWidth <= 768) {
+  // Change this to the path of your mobile HTML file
+  window.location.href = "index-mobile.html";
+}
+
+// =========================
+// ===== QUOTE FORM ========
+// =========================
 document.getElementById("quoteForm").addEventListener("submit", async function (e) {
   e.preventDefault();
 

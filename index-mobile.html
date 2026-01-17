@@ -3,150 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elite Detailz</title>
+<title>Elite Detailz | Mobile</title>
 
 <style>
+/* ========================= */
+/* ===== RESET / SAFETY ==== */
+/* ========================= */
 
-
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
 
 html, body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
   font-family: Arial, sans-serif;
   scroll-behavior: smooth;
 }
 
-body { overflow-x: hidden; }
-
+/* ========================= */
 /* ===== HEADER ===== */
+/* ========================= */
+
 .top-header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 70px;
   background: #000;
-  display: flex;
-  align-items: center;
-  padding: 0 40px;
+  padding: 14px 12px;
   z-index: 1000;
 }
 
-.header-left {
+.header-inner {
   display: flex;
   align-items: center;
-  gap: 40px;
-  flex: 1;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.header-left img { width: 48px; }
+.header-inner img {
+  width: 42px;
+}
 
 .nav {
   display: flex;
-  gap: 30px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .nav a {
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   text-decoration: none;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.7px;
+  white-space: nowrap;
 }
-
-.nav a:hover { color: #60a5fa; }
 
 .quote-btn {
+  margin-left: auto;
   background: linear-gradient(135deg, #7c3aed, #60a5fa);
   color: #fff;
-  padding: 8px 18px;
-  border-radius: 50px;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.65rem;
   text-decoration: none;
-  position: relative;
-  isolation: isolate;
+  white-space: nowrap;
 }
 
-.quote-btn::before {
-  content: "";
-  position: absolute;
-  inset: -5px;
-  border-radius: 50px;
-  background: linear-gradient(135deg, #7c3aed, #60a5fa);
-  filter: blur(18px);
-  opacity: 0.75;
-  z-index: -1;
-}
-
-.quote-btn:hover::before { opacity: 1; }
-
+/* ========================= */
 /* ===== HERO ===== */
+/* ========================= */
+
 .hero {
-  height: 100vh;
-  padding-top: 70px;
+  min-height: 100vh;
+  padding-top: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(180deg, #7c3aed, #60a5fa);
+  text-align: center;
   position: relative;
-  overflow: hidden;
 }
 
-.logo-container { text-align: center; z-index: 2; }
-
-.diamond-logo { width: 320px; }
+.diamond-logo {
+  width: 220px;
+}
 
 .logo-text {
-  margin-top: 15px;
-  font-size: 2.4rem;
+  margin-top: 14px;
+  font-size: 1.8rem;
   font-weight: 900;
   background: linear-gradient(180deg, #000, #7c3aed);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* ===== DIAMOND RAIN ===== */
+/* Diamond rain */
 .rain {
   position: absolute;
   top: -60px;
-  width: 30px;
+  width: 26px;
   animation: fall 6s linear forwards;
   pointer-events: none;
 }
 
 @keyframes fall {
-  from { transform: translateY(-100px) rotate(0deg); opacity: 1; }
-  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  from { transform: translateY(-100px); opacity: 1; }
+  to { transform: translateY(120vh); opacity: 0; }
 }
 
+/* ========================= */
 /* ===== ABOUT ===== */
+/* ========================= */
+
 .about {
-  padding: 120px 0;
+  padding: 80px 20px;
   background: #fff;
-}
-
-.about-title h2 {
   text-align: center;
-  font-size: 2.6rem;
-  margin-bottom: 80px;
 }
 
-.about-content {
-  max-width: 1400px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1px 1fr;
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
 }
-
-.about-divider { background: #e5e7eb; }
 
 .review-fade {
-  width: 320px;
-  height: 430px;
+  width: 260px;
+  height: 360px;
   margin: auto;
   position: relative;
 }
 
 .review-img {
   position: absolute;
-  width: 300px;
+  width: 260px;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
@@ -155,114 +148,168 @@ body { overflow-x: hidden; }
   box-shadow: 0 14px 35px rgba(0,0,0,0.25);
 }
 
-.review-img.active { opacity: 1; }
-
-.about-right { padding: 0 60px; }
+.review-img.active {
+  opacity: 1;
+}
 
 .about-text {
-  font-size: 1.05rem;
-  line-height: 1.9;
+  margin-top: 50px;
+  font-size: 1rem;
+  line-height: 1.8;
   color: #333;
 }
 
+/* ========================= */
 /* ===== CONTACT CTA ===== */
+/* ========================= */
+
 .contact-now {
   background: #000;
-  padding: 60px 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
 }
 
-.contact-now h2,
-.contact-now p { color: #fff; }
-
 .contact-now a {
+  display: inline-block;
+  margin-top: 16px;
   background: #fff;
   color: #000;
-  padding: 14px 28px;
+  padding: 12px 26px;
   border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
 }
 
+/* ========================= */
 /* ===== SERVICES ===== */
+/* ========================= */
+
 .services {
+  padding: 120px 20px;
   background: linear-gradient(180deg, #000, #7c3aed);
-  padding: 240px 0 160px;
+  color: #fff;
+  text-align: center;
 }
 
 .services h2 {
-  text-align: center;
-  font-size: 2.4rem;
+  font-size: 2rem;
 }
 
-.services-subtext {
-  text-align: center;
-  font-size: 1.2rem;
+.services p {
   font-style: italic;
+  margin-bottom: 40px;
 }
 
 .services-grid {
-  max-width: 1400px;
-  margin: 90px auto 0;
-  padding: 0 60px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 30px;
+  grid-template-columns: 1fr;
+  gap: 18px;
 }
 
 .service-box {
   background: rgba(255,255,255,0.15);
   border: 2px solid #000;
-  padding: 26px 20px;
-  height: 120px;
-  overflow: hidden;
-  transition: height 0.45s ease;
+  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
-.service-box:hover { height: 360px; }
+.service-box h3 {
+  margin: 0;
+}
 
 .service-desc {
-  opacity: 0;
-  margin-top: 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  font-size: 0.9rem;
   line-height: 1.6;
+  margin-top: 10px;
 }
 
-.service-box:hover .service-desc { opacity: 1; }
+.service-box.active .service-desc {
+  max-height: 300px;
+}
 
+/* ========================= */
 /* ===== GALLERY ===== */
-.gallery {
-  background: linear-gradient(180deg, #7c3aed, #60a5fa);
-  padding: 160px 0;
-}
+/* ========================= */
 
-.gallery h2,
-.gallery p { text-align: center; }
+.gallery {
+  padding: 120px 20px;
+  background: linear-gradient(180deg, #7c3aed, #60a5fa);
+  text-align: center;
+}
 
 .gallery-grid {
-  max-width: 1300px;
-  margin: 70px auto;
-  padding: 0 60px;
+  margin-top: 40px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: 1fr;
+  gap: 18px;
 }
 
 .gallery-grid img {
   width: 100%;
-  height: 390px;
+  height: 240px;
   object-fit: cover;
   border-radius: 16px;
   border: 3px solid #000;
   cursor: pointer;
-  transition: transform 0.3s ease;
 }
 
+/* ========================= */
+/* ===== CONTACT FINAL ===== */
+/* ========================= */
 
-.gallery-grid img:hover { transform: scale(1.03); }
+.contact-final {
+  padding: 100px 20px;
+  background: linear-gradient(180deg, #60a5fa, #000);
+  color: #fff;
+  text-align: center;
+}
 
+.contact-final img {
+  width: 140px;
+  margin-bottom: 20px;
+}
+
+/* ========================= */
+/* ===== FOOTER ===== */
+/* ========================= */
+
+.footer {
+  background: #000;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: underline;
+  margin: 0 5px;
+}
+
+.footer .social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.footer .social img {
+  width: 24px;
+  cursor: pointer;
+}
+
+/* ========================= */
 /* ===== LIGHTBOX ===== */
+/* ========================= */
+
 .lightbox {
   position: fixed;
   inset: 0;
@@ -272,7 +319,6 @@ body { overflow-x: hidden; }
   align-items: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.35s ease;
   z-index: 3000;
 }
 
@@ -286,30 +332,13 @@ body { overflow-x: hidden; }
   max-height: 90%;
   border-radius: 16px;
 }
-
-/* ===== FINAL CONTACT ===== */
-.contact-final {
-  background: linear-gradient(180deg, #60a5fa, #000);
-  padding: 140px 80px;
-}
-
-.contact-grid {
-  max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.contact-details { color: #fff; }
 </style>
 </head>
 
 <body>
 
 <header class="top-header">
-  <div class="header-left">
+  <div class="header-inner">
     <img src="images/elite-diamond.png">
     <nav class="nav">
       <a href="#home">Home</a>
@@ -318,65 +347,48 @@ body { overflow-x: hidden; }
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </nav>
+    <a href="quote.html" class="quote-btn">BOOK A QUOTE</a>
   </div>
-  <a href="quote.html" class="quote-btn">BOOK A QUOTE</a>
 </header>
 
 <section class="hero" id="home">
-  <div class="logo-container">
+  <div>
     <img src="images/elite-diamond.png" class="diamond-logo">
     <div class="logo-text">ELITE DETAILZ</div>
   </div>
 </section>
 
 <section class="about" id="about">
-  <div class="about-title"><h2>About Us</h2></div>
-
-  <div class="about-content">
-    <div class="review-fade">
-      <img src="images/Google Review 1.png" class="review-img active">
-      <img src="images/Google Review 2.png" class="review-img">
-      <img src="images/Google Review 3.png" class="review-img">
-      <img src="images/Google Review 4.png" class="review-img">
-    </div>
-
-    <div class="about-divider"></div>
-
-    <div class="about-right">
-      <div class="about-text">
-        At Elite Detailz, we don’t just clean cars — we restore, protect, and enhance them.
-        Based in North East London (Loughton) / West Essex, we serve Chigwell, Epping,
-        Buckhurst Hill, providing high-quality vehicle valeting and detailing services
-        tailored to each customer’s needs.
-        <br><br>
-        With extensive experience across modern and classic vehicles, our work goes far
-        beyond a standard wash.
-        <br><br>
-        Our reputation is built on attention to
-        <strong>Detail</strong>,
-        <strong>Reliability</strong>, and
-        <strong>Pride</strong> in our workmanship.
-      </div>
-    </div>
+  <h2>About Us</h2>
+  <div class="review-fade">
+    <img src="images/Google Review 1.png" class="review-img active">
+    <img src="images/Google Review 2.png" class="review-img">
+    <img src="images/Google Review 3.png" class="review-img">
+    <img src="images/Google Review 4.png" class="review-img">
+  </div>
+  <div class="about-text">
+  At Elite Detailz, we don’t just clean cars — we restore, protect, and enhance them. Based in North East London (Loughton) / West Essex, we serve Chigwell, Epping, Buckhurst Hill, providing high-quality vehicle valeting and detailing services tailored to each customer’s needs.
+  <br><br>
+  With extensive experience across modern and classic vehicles, our work goes far beyond a standard wash.
+  <br><br>
+  Our reputation is built on attention to <strong>Detail</strong>, <strong>Reliability</strong>, and <strong>Pride</strong> in our workmanship.
   </div>
 </section>
 
 <section class="contact-now">
-  <div>
-    <h2>Contact Us Now</h2>
-    <p>Book a professional detailing service today</p>
-  </div>
-  <a href="#contact">Contact Us Now</a>
+  <h2>Contact Us Now</h2>
+  <p>Book a professional detailing service today</p>
+  <a href="#contact">Contact Us</a>
 </section>
 
 <section class="services" id="services">
   <h2>Services</h2>
-  <p class="services-subtext">These are the services that we offer to our customers!</p>
+  <p>These are the services we offer</p>
 
   <div class="services-grid">
     <div class="service-box"><h3>Exterior & Interior</h3><div class="service-desc">Our interior deep cleaning refreshes and sanitises your cabin, while exterior detailing safely removes dirt and grime, restoring gloss, protection, and a near-new finish overall.</div></div>
     <div class="service-box"><h3>Ceramic Coating</h3><div class="service-desc">Elevate your car's protection and gloss with our ceramic coating application, creating a hydrophobic and durable barrier.</div></div>
-    <div class="service-box"><h3>Paint Correction</h3><div class="service-desc">Our expert service eliminates swirls, scratches, and oxidation while restoring gloss and clarity. Using precision techniques and premium service , we tailor the process to your paint's condition giving your car a showroom  finish.</div></div>
+    <div class="service-box"><h3>Paint Correction</h3><div class="service-desc">Our expert service eliminates swirls, scratches, and oxidation while restoring gloss and clarity. Using precision techniques and premium service, we tailor the process to your paint's condition giving your car a showroom finish.</div></div>
     <div class="service-box"><h3>Scratch Repair</h3><div class="service-desc">Our scratch repair service minimises light to moderate scratches and paint defects, restoring a smooth, uniform finish.</div></div>
     <div class="service-box"><h3>Headlight Restoration</h3><div class="service-desc">Our headlight restoration service removes oxidation and yellowing, restoring clarity and brightness through precision sanding and polishing, improving visibility, safety, appearance, and delivering a durable like-new finish.</div></div>
   </div>
@@ -384,7 +396,6 @@ body { overflow-x: hidden; }
 
 <section class="gallery" id="gallery">
   <h2>Gallery</h2>
-  <p>Here is some of our work</p>
   <div class="gallery-grid">
     <img src="images/Gallery 1.png">
     <img src="images/Gallery 2.png">
@@ -396,36 +407,33 @@ body { overflow-x: hidden; }
 </section>
 
 <section class="contact-final" id="contact">
-  <div class="contact-grid">
-    <!-- LEFT: LOGO -->
-    <img src="images/elite-diamond.png" width="180">
-
-    <!-- RIGHT: DETAILS -->
-    <div class="contact-details">
-      <h2 style="color:#fff;">Contact Us</h2>
-      <p>Email: detailzz.elite@gmail.com</p>
-      <p>Phone: 07516 087901</p>
-      <p>© 2026 Elite Detailz. All rights reserved.</p>
-      <p>Terms and Conditions -</p>
-      <p>Privacy Policy Secure</p>
-
-
-      <a href="https://www.instagram.com/elite_.detailz/" 
-         target="_blank" 
-         style="display:flex; align-items:center; gap:12px; margin-top:20px; text-decoration:none; color:#fff;">
-        <img src="images/instagram.png" width="28">
-        <span>@elite_.detailz</span>
-      </a>
-    </div>
-  </div>
+  <img src="images/elite-diamond.png">
+  <p>Email: detailzz.elite@gmail.com</p>
+  <p>Phone: 07516 087901</p>
+  <p>© 2026 Elite Detailz</p>
 </section>
 
+<!-- FOOTER -->
+<div class="footer">
+  <h2>Contact Us</h2>
+  <div class="social">
+    <a href="https://instagram.com/elite_detailz" target="_blank">
+      <img src="images/instagram.png" alt="Instagram">
+    </a>
+  </div>
+  <div>
+    <a href="terms.html" target="_blank">Terms & Conditions</a> | 
+    <a href="privacy.html" target="_blank">Privacy Policy</a>
+  </div>
+</div>
 
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <img id="lightbox-img">
 </div>
 
 <script>
+/* Diamond Rain */
 function createRain() {
   const img = document.createElement("img");
   img.src = "images/elite-diamond.png";
@@ -434,9 +442,9 @@ function createRain() {
   document.querySelector(".hero").appendChild(img);
   setTimeout(() => img.remove(), 7000);
 }
-setInterval(createRain, 600);
+setInterval(createRain, 700);
 
-/* Google Reviews Fade */
+/* Reviews fade */
 const reviews = document.querySelectorAll(".review-img");
 let index = 0;
 setInterval(() => {
@@ -445,12 +453,18 @@ setInterval(() => {
   reviews[index].classList.add("active");
 }, 5000);
 
-/* Gallery Lightbox */
-const galleryImages = document.querySelectorAll(".gallery-grid img");
+/* SERVICES TOGGLE INTERACTIVE */
+document.querySelectorAll(".service-box").forEach(box => {
+  box.addEventListener("click", () => {
+    box.classList.toggle("active");
+  });
+});
+
+/* GALLERY LIGHTBOX INTERACTIVE */
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 
-galleryImages.forEach(img => {
+document.querySelectorAll(".gallery-grid img").forEach(img => {
   img.addEventListener("click", () => {
     lightboxImg.src = img.src;
     lightbox.classList.add("active");
