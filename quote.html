@@ -133,15 +133,15 @@ button:hover {
       id="datetime"
       type="datetime-local"
       required
-      min="2026-01-01T09:30"
-      max="2027-12-31T18:30"
-      step="1800">
+      min="2026-01-01T00:00"
+      max="2027-12-31T23:59">
 
-    <label>Vehicle Details</label>
-    <textarea
+    <label>Upload Vehicle Pictures</label>
+    <input
       id="vehicleDetails"
-      placeholder="Make, model, condition, anything we should know...">
-    </textarea>
+      type="file"
+      accept="image/*"
+      multiple>
 
     <button type="submit">Submit Quote Request</button>
   </form>
