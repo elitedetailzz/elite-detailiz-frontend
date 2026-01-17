@@ -107,7 +107,7 @@ button:hover {
   <h1>Book a Quote</h1>
   <p>Tell us about your vehicle and we’ll get back to you</p>
 
-  <form id="quoteForm">
+  <form id="quoteForm" enctype="multipart/form-data">
 
     <label>Full Name</label>
     <input id="name" type="text" placeholder="Your name" required>
@@ -136,12 +136,8 @@ button:hover {
       min="2026-01-01T00:00"
       max="2027-12-31T23:59">
 
-    <label>Upload Vehicle Pictures</label>
-    <input
-      id="vehicleDetails"
-      type="file"
-      accept="image/*"
-      multiple>
+    <label>Upload Vehicle Image</label>
+    <input id="vehicleImage" type="file" accept="image/*">
 
     <button type="submit">Submit Quote Request</button>
   </form>

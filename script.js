@@ -1,40 +1,23 @@
-document.getElementById("quoteForm").addEventListener("submit", async function (e) {
+const form = document.getElementById("quoteForm");
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const datetimeInput = document.getElementById("datetime");
-  const filesInput = document.getElementById("vehicleDetails");
+  const data = new FormData();
+  data.append("name", document.getElementById("name").value);
+  data.append("email", document.getElementById("email").value);
+  data.append("phone", document.getElementById("phone").value);
+  data.append("service", document.getElementById("service").value);
 
-  if (!datetimeInput) {
-    alert("Datetime input not found");
-    return;
-  }
+  const datetimeValue = document.getElementById("datetime").value;
+  let date = "", time = "";
+  if (datetimeValue.includes("T")) [date, time] = datetimeValue.split("T");
+  data.append("date", date);
+  data.append("time", time);
 
-  const datetimeValue = datetimeInput.value;
+  const fileInput = document.getElementById("vehicleImage");
+  if (fileInput.files[0]) data.append("vehicleImage", fileInput.files[0]);
 
-  let date = "";
-  let time = "";
-
-  if (datetimeValue.includes("T")) {
-    [date, time] = datetimeValue.split("T");
-  }
-
-  // Collect files
-  const files = filesInput.files;
-  const formData = new FormData();
-
-  formData.append("name", document.getElementById("name").value || "");
-  formData.append("email", document.getElementById("email").value || "");
-  formData.append("phone", document.getElementById("phone").value || "");
-  formData.append("service", document.getElementById("service").value || "");
-  formData.append("date", date);
-  formData.append("time", time);
-
-  // Append multiple images
-  for (let i = 0; i < files.length; i++) {
-    formData.append("vehicleImages", files[i]);
-  }
-
-  // Correct backend detection (local vs production)
   const API_BASE =
     window.location.protocol === "file:" ||
     window.location.hostname === "localhost" ||
@@ -45,12 +28,12 @@ document.getElementById("quoteForm").addEventListener("submit", async function (
   try {
     const response = await fetch(`${API_BASE}/send-quote`, {
       method: "POST",
-      body: formData // Use FormData for files
+      body: data
     });
 
     if (response.ok) {
       alert("✅ Quote sent successfully!");
-      document.getElementById("quoteForm").reset();
+      form.reset();
     } else {
       alert("❌ Server error");
     }
