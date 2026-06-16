@@ -1,6 +1,9 @@
 document.getElementById("quoteForm").addEventListener("submit", async function (e) {
   e.preventDefault();
 
+  // Get the loading banner element from your HTML
+  const loadingAlert = document.getElementById('loading-alert');
+
   // Get form fields
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
@@ -14,6 +17,9 @@ document.getElementById("quoteForm").addEventListener("submit", async function (
     alert("Please fill in all required fields.");
     return;
   }
+
+  // 1. INSTANTLY SHOW THE "PLEASE WAIT" BANNER
+  loadingAlert.classList.add('active');
 
   // Split date and time if provided
   let date = "";
@@ -50,6 +56,9 @@ document.getElementById("quoteForm").addEventListener("submit", async function (
       body: formData // send as multipart/form-data
     });
 
+    // 2. HIDE THE BANNER AS SOON AS THE SERVER RESPONDS
+    loadingAlert.classList.remove('active');
+
     if (response.ok) {
       alert("✅ Quote sent successfully!");
       document.getElementById("quoteForm").reset();
@@ -58,6 +67,8 @@ document.getElementById("quoteForm").addEventListener("submit", async function (
     }
   } catch (err) {
     console.error(err);
+    // Hide the banner if the server crashes or can't be reached
+    loadingAlert.classList.remove('active');
     alert("❌ Backend not reachable");
   }
 });

@@ -108,10 +108,57 @@ button:hover {
   text-decoration: none;
   font-size: 0.9rem;
 }
+
+/* ===== PLEASE WAIT DROP BANNER ===== */
+.alert-box {
+  position: fixed;
+  top: -100px; /* Starts off-screen */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px 32px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+  z-index: 9999;
+  transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Active Class slides the box down */
+.alert-box.active {
+  top: 30px; 
+}
+
+.loading-box {
+  background: #1e1b4b; /* Deep background matching your dark accents */
+  color: #fff;
+  border: 1px solid #7c3aed;
+}
+
+/* CSS Animated Spinner */
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #60a5fa; /* Accent blue color */
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 </style>
 </head>
 
 <body>
+
+<div id="loading-alert" class="alert-box loading-box">
+  <div class="spinner"></div>
+  <span>Please wait, uploading your images...</span>
+</div>
 
 <div class="quote-container">
   <h1>Book a Quote</h1>
