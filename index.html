@@ -357,6 +357,43 @@ body { overflow-x: hidden; }
 }
 
 .contact-details { color: #fff; }
+
+/* ===== MOBILE RESPONSIVE FIXES ===== */
+@media (max-width: 768px) {
+  
+  /* 1. Make the hero logo scale down beautifully on phone screens */
+  .diamond-logo {
+    width: 80%;       /* Takes up 80% of the phone width, never spilling over */
+    max-width: 260px; /* Keeps it perfectly proportioned */
+    height: auto;
+  }
+  
+  .logo-text {
+    font-size: 1.8rem; /* Shrinks text size slightly so it fits on one line */
+  }
+
+  /* 2. Fix the broken overlapping Header */
+  .top-header {
+    padding: 0 15px;  /* Reduces edge padding */
+    justify-content: space-between;
+  }
+
+  /* Hide the desktop nav bar links on mobile so they don't overlap your button */
+  .nav {
+    display: none; 
+  }
+
+  /* Shrink the button slightly for phone screens */
+  .quote-btn {
+    font-size: 0.75rem;
+    padding: 6px 14px;
+  }
+  
+  .quote-btn::before {
+    filter: blur(10px); /* Tames the glow effect on mobile backgrounds */
+  }
+}
+
 </style>
 </head>
 
