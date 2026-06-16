@@ -30,6 +30,12 @@ html, body {
 
 body { overflow-x: hidden; }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
 /* ===== HEADER ===== */
 .top-header {
   position: fixed;
@@ -357,42 +363,105 @@ body { overflow-x: hidden; }
 }
 
 .contact-details { color: #fff; }
-
-/* ===== MOBILE RESPONSIVE FIXES ===== */
+/* ===== COMPLETE MOBILE RESPONSIVE OPTIMIZATION ===== */
 @media (max-width: 768px) {
   
-  /* 1. Make the hero logo scale down beautifully on phone screens */
+  /* Force everything to stay within the phone boundaries */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* 1. Scale down the Hero section elements */
   .diamond-logo {
-    width: 80%;       /* Takes up 80% of the phone width, never spilling over */
-    max-width: 260px; /* Keeps it perfectly proportioned */
+    width: 70% !important;
+    max-width: 240px;
     height: auto;
   }
   
   .logo-text {
-    font-size: 1.8rem; /* Shrinks text size slightly so it fits on one line */
+    font-size: 1.6rem !important;
   }
 
-  /* 2. Fix the broken overlapping Header */
+  /* 2. Strip desktop nav bar links so header doesn't expand */
+  .nav {
+    display: none !important; 
+  }
+  
   .top-header {
-    padding: 0 15px;  /* Reduces edge padding */
+    padding: 0 15px;
     justify-content: space-between;
   }
 
-  /* Hide the desktop nav bar links on mobile so they don't overlap your button */
-  .nav {
-    display: none; 
-  }
-
-  /* Shrink the button slightly for phone screens */
   .quote-btn {
     font-size: 0.75rem;
-    padding: 6px 14px;
+    padding: 8px 14px;
+  }
+
+  /* 3. Drop About Section into a single vertical column */
+  .about-content {
+    grid-template-columns: 1fr !important; /* Stack vertically instead of side-by-side */
+    padding: 0 20px;
+    gap: 30px;
   }
   
-  .quote-btn::before {
-    filter: blur(10px); /* Tames the glow effect on mobile backgrounds */
+  .about-divider {
+    display: none; /* Hide the vertical separator line on mobile */
+  }
+
+  .about-right {
+    padding: 0 10px;
+  }
+
+  /* 4. Fix Services Grid (Stack them 1-by-1 instead of 5 columns wide) */
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 20px;
+  }
+
+  .service-box {
+    height: auto; /* Allow text wrapping */
+    min-height: 100px;
+  }
+  
+  .service-box:hover {
+    height: auto;
+  }
+  
+  .service-desc {
+    opacity: 1; /* Keep text visible on touch devices where hover doesn't exist */
+    margin-top: 10px;
+  }
+
+  /* 5. Fix Gallery Grid (Stack images 1-by-1 or 2-by-2) */
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 20px;
+  }
+  
+  .gallery-grid img {
+    height: 280px; /* Make them slightly shorter for phone scrolls */
+  }
+
+  /* 6. Fix Contact Grid footer alignment */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .contact-grid img {
+    margin: 0 auto;
+  }
+  
+  .contact-now {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 40px 20px;
   }
 }
+
 
 </style>
 </head>
