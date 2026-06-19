@@ -372,24 +372,9 @@ html, body {
   gap: 15px; /* Spaces out the Sign In and Book a Quote buttons */
 }
 
-/* Premium styled Sign In Button */
-.login-btn {
-  color: #fff;
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  padding: 10px 20px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 30px;
-  transition: all 0.3s ease;
-}
 
-.login-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #60a5fa; /* Glows blue on hover to match theme */
-  color: #60a5fa;
-}
+
+
 
 /* ===== COMPLETE MOBILE RESPONSIVE OPTIMIZATION ===== */
 @media (max-width: 768px) {
@@ -403,16 +388,12 @@ html, body {
     gap: 8px !important; /* Pulls the buttons closer together on small screens */
   }
 
-  .login-btn {
-    font-size: 0.7rem !important;
-    padding: 6px 12px !important;
-  }
 
   .quote-btn {
     font-size: 0.7rem !important;
     padding: 6px 12px !important;
   }
-  
+
   /* Force everything to stay within the phone boundaries */
   html, body {
     width: 100%;
@@ -528,7 +509,6 @@ html, body {
   </div>
   
   <div class="header-actions">
-    <a href="login.html" class="login-btn">Sign In</a>
     <a href="quote.html" class="quote-btn">BOOK A QUOTE</a>
   </div>
 </header>
