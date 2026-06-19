@@ -219,8 +219,9 @@ html, body {
 
 .services-subtext {
   text-align: center;
-  font-size: 1.2rem;
-  font-style: italic;
+  font-size: 1.5rem; /* Increased from 1.2rem to make it bigger */
+  font-weight: bold; /* Added to make it stand out */
+  margin-top: 10px;
 }
 
 .services-grid {
@@ -230,6 +231,42 @@ html, body {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
+}
+/* ===== REVIEW ARROWS ===== */
+.review-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.review-arrow:hover {
+  background: #7c3aed;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.left-arrow {
+  left: -60px; /* Changed from -25px to push it further left */
+}
+
+.right-arrow {
+  right: -60px; /* Changed from -5px to push it further right */
+}
+
+/* Ensure the image container leaves room for position relative context */
+.review-fade {
+  position: relative;
+  width: 320px;
+  height: 430px;
+  margin: auto;
 }
 
 .service-box {
@@ -373,9 +410,6 @@ html, body {
 }
 
 
-
-
-
 /* ===== COMPLETE MOBILE RESPONSIVE OPTIMIZATION ===== */
 @media (max-width: 768px) {
   /* Mobile Header Adjustments */
@@ -387,8 +421,7 @@ html, body {
   .header-actions {
     gap: 8px !important; /* Pulls the buttons closer together on small screens */
   }
-
-
+  
   .quote-btn {
     font-size: 0.7rem !important;
     padding: 6px 12px !important;
@@ -531,11 +564,15 @@ html, body {
 
   <div class="about-content">
     <div class="review-fade">
-      <img src="images/Google Review 1.png" class="review-img active">
-      <img src="images/Google Review 2.png" class="review-img">
-      <img src="images/Google Review 3.png" class="review-img">
-      <img src="images/Google Review 4.png" class="review-img">
-    </div>
+  <button class="review-arrow left-arrow" id="prevReview">&#10094;</button>
+
+  <img src="images/Google Review 1.png" class="review-img active">
+  <img src="images/Google Review 2.png" class="review-img">
+  <img src="images/Google Review 3.png" class="review-img">
+  <img src="images/Google Review 4.png" class="review-img">
+
+  <button class="review-arrow right-arrow" id="nextReview">&#10095;</button>
+</div>
 
     <div class="about-divider"></div>
 
@@ -573,7 +610,7 @@ html, body {
   <div class="services-grid">
     <div class="service-box"><h3>Exterior & Interior</h3><div class="service-desc">Our interior deep cleaning refreshes and sanitises your cabin, while exterior detailing safely removes dirt and grime, restoring gloss, protection, and a near-new finish overall.</div></div>
     <div class="service-box"><h3>Ceramic Coating</h3><div class="service-desc">Elevate your car's protection and gloss with our ceramic coating application, creating a hydrophobic and durable barrier.</div></div>
-    <div class="service-box"><h3>Paint Correction</h3><div class="service-desc">Our expert service eliminates swirls, scratches, and oxidation while restoring gloss and clarity. Using precision techniques and premium service , we tailor the process to your paint's condition giving your car a showroom  finish.</div></div>
+    <div class="service-box"><h3>Paint Polishing</h3><div class="service-desc">Our expert service eliminates swirls, scratches, and oxidation while restoring gloss and clarity. Using precision techniques and premium service , we tailor the process to your paint's condition giving your car a showroom  finish.</div></div>
     <div class="service-box"><h3>Scratch Repair</h3><div class="service-desc">Our scratch repair service minimises light to moderate scratches and paint defects, restoring a smooth, uniform finish.</div></div>
     <div class="service-box"><h3>Headlight Restoration</h3><div class="service-desc">Our headlight restoration service removes oxidation and yellowing, restoring clarity and brightness through precision sanding and polishing, improving visibility, safety, appearance, and delivering a durable like-new finish.</div></div>
   </div>
@@ -633,14 +670,34 @@ function createRain() {
 }
 setInterval(createRain, 600);
 
-/* Google Reviews Fade */
+/* Google Reviews Manual Slide */
 const reviews = document.querySelectorAll(".review-img");
+const prevBtn = document.getElementById("prevReview");
+const nextBtn = document.getElementById("nextReview");
 let index = 0;
-setInterval(() => {
+
+function showReview(newIndex) {
+  // Remove the active class from the current review
   reviews[index].classList.remove("active");
-  index = (index + 1) % reviews.length;
+  
+  // Set the new index
+  index = newIndex;
+  
+  // Add the active class to the new review
   reviews[index].classList.add("active");
-}, 5000);
+}
+
+// Next Button Click
+nextBtn.addEventListener("click", () => {
+  let nextIndex = (index + 1) % reviews.length;
+  showReview(nextIndex);
+});
+
+// Previous Button Click
+prevBtn.addEventListener("click", () => {
+  let prevIndex = (index - 1 + reviews.length) % reviews.length;
+  showReview(prevIndex);
+});
 
 /* Gallery Lightbox */
 const galleryImages = document.querySelectorAll(".gallery-grid img");
