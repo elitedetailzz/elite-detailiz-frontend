@@ -653,36 +653,36 @@ html, body {
 
 <section class="contact-final" id="contact">
   <div class="contact-grid">
-    <img src="images/elite-diamond.png" width="180">
+    <img src="images/elite-diamond.png" width="180" alt="Elite Diamond">
 
     <div class="contact-details">
       <h2 style="color:#fff;">Contact Us</h2>
       <p>Email: detailzz.elite@gmail.com</p>
       <p>Phone: 07516 087901</p>
       <p>© 2026 Elite Detailz. All rights reserved.</p>
-      <p>Terms and Conditions -</p>
+      
+      <p><a href="terms.pdf" target="_blank" style="color: #60a5fa; text-decoration: underline; font-weight: bold;">Terms and Conditions</a></p>
       <p>Privacy Policy Secure</p>
 
       <a href="https://www.instagram.com/elite_.detailz/" 
          target="_blank" 
          style="display:flex; align-items:center; gap:12px; margin-top:20px; text-decoration:none; color:#fff;">
-        <img src="images/instagram.png" width="28">
+        <img src="images/instagram.png" width="28" alt="Instagram">
         <span>@elite_.detailz</span>
       </a>
 
       <a href="https://www.tiktok.com/@elite_detailz" 
-   target="_blank" 
-   style="display:flex; align-items:center; gap:12px; margin-top:12px; text-decoration:none; color:#fff;">
-  <img src="images/tiktok.png" width="28" height="28" alt="TikTok" style="border-radius: 50%; object-fit: cover;">
-  <span>@elite_detailz</span>
-</a>
+         target="_blank" 
+         style="display:flex; align-items:center; gap:12px; margin-top:12px; text-decoration:none; color:#fff;">
+        <img src="images/tiktok.png" width="28" alt="TikTok" style="border-radius: 50%; object-fit: cover;">
+        <span>@elite_detailz</span>
+      </a>
     </div>
   </div>
 </section>
 
-
 <div class="lightbox" id="lightbox">
-  <img id="lightbox-img">
+  <img id="lightbox-img" alt="Enlarged gallery item">
 </div>
 
 <script>
@@ -691,7 +691,8 @@ function createRain() {
   img.src = "images/elite-diamond.png";
   img.className = "rain";
   img.style.left = Math.random() * window.innerWidth + "px";
-  document.querySelector(".hero").appendChild(img);
+  const heroSection = document.querySelector(".hero");
+  if (heroSection) heroSection.appendChild(img);
   setTimeout(() => img.remove(), 7000);
 }
 setInterval(createRain, 600);
@@ -703,27 +704,23 @@ const nextBtn = document.getElementById("nextReview");
 let index = 0;
 
 function showReview(newIndex) {
-  // Remove the active class from the current review
+  if(reviews.length === 0) return;
   reviews[index].classList.remove("active");
-  
-  // Set the new index
   index = newIndex;
-  
-  // Add the active class to the new review
   reviews[index].classList.add("active");
 }
 
-// Next Button Click
-nextBtn.addEventListener("click", () => {
-  let nextIndex = (index + 1) % reviews.length;
-  showReview(nextIndex);
-});
+if (nextBtn && prevBtn) {
+  nextBtn.addEventListener("click", () => {
+    let nextIndex = (index + 1) % reviews.length;
+    showReview(nextIndex);
+  });
 
-// Previous Button Click
-prevBtn.addEventListener("click", () => {
-  let prevIndex = (index - 1 + reviews.length) % reviews.length;
-  showReview(prevIndex);
-});
+  prevBtn.addEventListener("click", () => {
+    let prevIndex = (index - 1 + reviews.length) % reviews.length;
+    showReview(prevIndex);
+  });
+}
 
 /* Gallery Lightbox */
 const galleryImages = document.querySelectorAll(".gallery-grid img");
@@ -732,14 +729,18 @@ const lightboxImg = document.getElementById("lightbox-img");
 
 galleryImages.forEach(img => {
   img.addEventListener("click", () => {
-    lightboxImg.src = img.src;
-    lightbox.classList.add("active");
+    if (lightboxImg && lightbox) {
+      lightboxImg.src = img.src;
+      lightbox.classList.add("active");
+    }
   });
 });
 
-lightbox.addEventListener("click", () => {
-  lightbox.classList.remove("active");
-});
+if (lightbox) {
+  lightbox.addEventListener("click", () => {
+    lightbox.classList.remove("active");
+  });
+}
 </script>
 
 </body>
