@@ -233,6 +233,7 @@ html, body {
   gap: 30px;
 }
 /* ===== REVIEW ARROWS ===== */
+/* ===== REVIEW ARROWS ===== */
 .review-arrow {
   position: absolute;
   top: 50%;
@@ -240,8 +241,18 @@ html, body {
   background: rgba(0, 0, 0, 0.6);
   color: white;
   border: none;
-  font-size: 1.5rem;
-  padding: 12px 16px;
+  font-size: 1.3rem;
+  
+  /* Lock width and height to form a perfect circle */
+  width: 45px;
+  height: 45px;
+  padding: 0; /* Clear previous padding to prevent stretching */
+  
+  /* Center the arrow icon perfectly inside the circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
   cursor: pointer;
   border-radius: 50%;
   z-index: 10;
@@ -276,6 +287,18 @@ html, body {
   height: 120px;
   overflow: hidden;
   transition: height 0.45s ease;
+
+  /* Added lines to center titles vertically and horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* Centers items horizontally */
+  justify-content: flex-start; /* Keeps title at the top of the box boundary */
+  text-align: center;     /* Centers multi-line title strings */
+}
+
+.service-box h3 {
+  margin: 0;
+  width: 100%;
 }
 
 .service-box:hover { height: 360px; }
@@ -421,7 +444,7 @@ html, body {
   .header-actions {
     gap: 8px !important; /* Pulls the buttons closer together on small screens */
   }
-  
+
   .quote-btn {
     font-size: 0.7rem !important;
     padding: 6px 12px !important;
@@ -579,8 +602,7 @@ html, body {
     <div class="about-right">
       <div class="about-text">
         At Elite Detailz, we don’t just clean cars — we restore, protect, and enhance them.
-        Based in North East London (Loughton) / West Essex, we serve Chigwell, Epping,
-        Buckhurst Hill, providing high-quality vehicle valeting and detailing services
+        Based in North East London (Loughton) / West Essex, providing high-quality vehicle valeting and detailing services
         tailored to each customer’s needs.
         <br><br>
         With extensive experience across modern and classic vehicles, our work goes far
@@ -631,10 +653,8 @@ html, body {
 
 <section class="contact-final" id="contact">
   <div class="contact-grid">
-    <!-- LEFT: LOGO -->
     <img src="images/elite-diamond.png" width="180">
 
-    <!-- RIGHT: DETAILS -->
     <div class="contact-details">
       <h2 style="color:#fff;">Contact Us</h2>
       <p>Email: detailzz.elite@gmail.com</p>
@@ -643,13 +663,19 @@ html, body {
       <p>Terms and Conditions -</p>
       <p>Privacy Policy Secure</p>
 
-
       <a href="https://www.instagram.com/elite_.detailz/" 
          target="_blank" 
          style="display:flex; align-items:center; gap:12px; margin-top:20px; text-decoration:none; color:#fff;">
         <img src="images/instagram.png" width="28">
         <span>@elite_.detailz</span>
       </a>
+
+      <a href="https://www.tiktok.com/@elite_detailz" 
+   target="_blank" 
+   style="display:flex; align-items:center; gap:12px; margin-top:12px; text-decoration:none; color:#fff;">
+  <img src="images/tiktok.png" width="28" height="28" alt="TikTok" style="border-radius: 50%; object-fit: cover;">
+  <span>@elite_detailz</span>
+</a>
     </div>
   </div>
 </section>
