@@ -429,9 +429,17 @@ html, body {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 15px; /* Spaces out the Sign In and Book a Quote buttons */
+  gap: 15px; /* Spaces out the Book a Quote button and D.V.INC tag */
 }
-
+/* Initials Branding Tag */
+.brand-tag {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  user-select: none;
+}
 
 /* ===== COMPLETE MOBILE RESPONSIVE OPTIMIZATION ===== */
 @media (max-width: 768px) {
@@ -564,9 +572,10 @@ html, body {
     </nav>
   </div>
   
-  <div class="header-actions">
-    <a href="quote.html" class="quote-btn">BOOK A QUOTE</a>
-  </div>
+ <div class="header-actions">
+  <span class="brand-tag">DV.INC</span>
+  <a href="quote.html" class="quote-btn">BOOK A QUOTE</a>
+</div>
 </header>
 
 <!-- Please Wait / Loading Alert Box -->
